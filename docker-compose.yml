@@ -1,0 +1,72 @@
+version: "3.9"
+services:           # define hosts
+  db:               # we didn't map 3306:3306, external world can't touch it (good)
+    image: mysql:8.0
+    restart: unless-stopped  # persistant unless manual exit
+    environment:    # define variables (hardcoded)
+      MYSQL_ROOT_PASSWORD: rootpass
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: wpuser
+      MYSQL_PASSWORD: wppass
+    command: --default-authentication-plugin=mysql_native_password  # old auth plugin (works with wp)
+    healthcheck:    # check if db is available (up)
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "wpuser", "-pwppass"]
+      interval: 5s  # every 5 secs
+      retries: 10   # 10 times until success
+    volumes:        # for management & persistant storage 
+      - db_data:/var/lib/mysql  #db_data resides inside mysql location
+
+  wordpress:        # the main server
+    image: wordpress:php8.2-apache
+    restart: unless-stopped
+    depends_on:     # references starting conditions
+      - db
+        #condition: service-healthy    # ensures the service is up before exec
+      - internal-api
+        #condition: service-healthy    # must have a set healthcheck or similar
+      - static-assets
+        #condition: service-healthy
+    environment:
+      WORDPRESS_DB_HOST: db:3306    # resolves via docker's internal dns
+      WORDPRESS_DB_NAME: wordpress
+      WORDPRESS_DB_USER: wpuser
+      WORDPRESS_DB_PASSWORD: wppass
+    ports:
+      - "8080:80"                   # externally available via localhost:8080
+    volumes:
+      - ./wordpress/wp-content/plugins/vuln-proxy:/var/www/html/wp-content/plugins/vuln-proxy
+      - ./wordpress/wp-content/plugins/safe-proxy:/var/www/html/wp-content/plugins/safe-proxy
+
+  internal-api:
+    build: ./internal-api
+    restart: unless-stopped
+    expose:
+      - "5000"                     # exposed!=port; browser can't reach, only wp
+    environment:
+      INTERNAL_SECRET: '"flag{THIS_IS_INTERNAL_SECRET}"'
+    healthcheck:
+      test: ["CMD", "curl", "-f", "localhost:5000"]    # command to check if receives 200 or /healthy
+      interval: 5s    # how long to test
+      timeout: 3s     # before it fails
+      retries: 5      # how many fails
+      start_period: 10s  # grace period before start
+
+  static-assets:
+    build:  ./static-assets
+    restart: unless-stopped
+    expose:
+      - "8000"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "localhost:8000"]
+      interval: 4s
+      timeout: 2s
+      retries: 5
+      start_period: 9s
+
+  attacker:                       # our red-team box
+    image: curlimages/curl:8.7.1
+    restart: unless-stopped
+    entrypoint: ["sleep", "infinity"]    # stays alive forever (so you can exec in)
+
+volumes:    # defined (used by db)
+  db_data:
