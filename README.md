@@ -142,5 +142,5 @@ real    0m5.092s
 This project is provided as-is for educational use.
 Use responsibly. Do not deploy outside of controlled learning environments.
 >[!IMPORTANT]
-> Use project owner's email listed at SECURITY.md for reporting violations or information.
+> Use project owner's email listed at [SECURITY.md](SECURITY.md) for reporting violations or information.
 
