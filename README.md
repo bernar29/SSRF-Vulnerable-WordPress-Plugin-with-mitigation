@@ -140,7 +140,8 @@ real    0m5.092s
 ```
 **License**
 This project is provided as-is for educational use.
-Use responsibly. Do not deploy outside of controlled learning environments.
+Use responsibly. Do not deploy outside of controlled learning environments. See [LICENSE](LICENSE).
+
 >[!IMPORTANT]
 > Use project owner's email listed at [SECURITY.md](SECURITY.md) for reporting violations or information.
 
