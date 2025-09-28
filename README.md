@@ -48,7 +48,7 @@ This lab shows:
 ## ⚙️ Setup Instructions
 
 >[!TIP]
-> For detailed lab instructions, setting up docker, and diving deeper: go see [SETUP.md](SETUP.md) for detailed Docker setup instructions.
+> For detailed lab instructions, setting up docker, and diving deeper: go see [SETUP.md](SETUP.md).
 
 
 1. **Clone the repo**
