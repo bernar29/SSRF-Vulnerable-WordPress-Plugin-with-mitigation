@@ -6,11 +6,13 @@
 
 ## Prerequisites
 
-- Docker Desktop
+- [Docker Desktop](https://www.docker.com/products/docker-desktop/) (Recommended — installs GUI, engine, and plugin)
 
 - or Docker Engine + Docker Compose plugin
 
-- Git (to clone this repository)
+- [Git](https://git-scm.com/downloads) (to clone this repository)
+
+- [GitHub Desktop](https://desktop.github.com/download/) (For ease of use)
 
 ### Verify installation:
 ```bash
