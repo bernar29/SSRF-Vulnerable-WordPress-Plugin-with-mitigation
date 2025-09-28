@@ -146,7 +146,7 @@ Use responsibly. Do not deploy outside of controlled learning environments. See 
 > Use project owner's email listed at [SECURITY.md](SECURITY.md) for reporting violations or information.
 
 ## Share
-Check out this SSRF vulnerable Docker lab for safe learning and testing: https://github.com/bernar29/SSRF-Vulnerable-WordPress-Plugin-with-mitigation
+Check out this SSRF vulnerable Docker lab for safe learning and testing: [SSRF lab](https://github.com/bernar29/SSRF-Vulnerable-WordPress-Plugin-with-mitigation)
 
 #SSRF #WebSecurity #VulnerabilityResearch 
 #Docker #WordPress #BlueTeam #ContainerSecurity
