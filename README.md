@@ -7,8 +7,8 @@
 A self-contained Docker lab that demonstrates **Server-Side Request Forgery (SSRF)** through a deliberately vulnerable WordPress plugin.  
 It also includes an internal API and static assets service to simulate typical SSRF targets.
 
-⚠️ **Important:** This environment is intentionally insecure and should only be used for **learning and research**.  
-**Do not deploy in production.**
+   ⚠️ **Important:** This environment is intentionally insecure and should only be used for **learning and research**.  
+         **Do not deploy in production.**
 
 ---
 
@@ -18,11 +18,18 @@ Server-Side Request Forgery (SSRF) is a vulnerability where an attacker tricks a
 
 This lab shows:
 - How SSRF can leak secrets from an internal API
+ 
 - How SSRF can be used for timing-based attacks
+ 
 - Why insecure proxy endpoints are dangerous
+ 
 - How the vulnerability can be mitigated with a hardened plugin
+
+ 
 >[!NOTE]
 > The hardened version only shows how to fix the issues, it's not a precise guide
+
+
 ---
 
 ## 🧩 Lab Components
@@ -35,9 +42,14 @@ This lab shows:
 | **Static Assets**| Serves benign files (e.g. PNG images) to simulate normal external requests. |
 | **Attacker**    | Minimal container with `curl` for running automated SSRF test scripts.      |
 
+
 ---
 
 ## ⚙️ Setup Instructions
+
+>[!TIP]
+> For detailed lab instructions, setting up docker, and diving deeper: go see [SETUP.md](SETUP.md) for detailed Docker setup instructions.
+
 
 1. **Clone the repo**
    ```bash
