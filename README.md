@@ -10,7 +10,7 @@ It also includes an internal API and static assets service to simulate typical S
    ⚠️ **Important:** This environment is intentionally insecure and should only be used for **learning and research**.  
          **Do not deploy in production.**
 >[!NOTE]
-> Latest release: [v1.0.0](https://github.com/YOUR-USERNAME/ssrf-lab/releases/tag/v1.0.0)
+> Latest release: [v1.0.0](https://github.com/bernar29/SSRF-Vulnerable-WordPress-Plugin-with-mitigation/releases/tag/v1.0.0)
 >
 ---
 
