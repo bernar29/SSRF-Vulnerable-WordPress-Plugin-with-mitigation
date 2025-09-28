@@ -108,7 +108,7 @@ real    0m5.092s
 >[!CAUTION]
 > Pull requests should not be modified to include a real secret
 
-**Hardening**
+## **Hardening**
 >[!TIP]
 > This repo also includes a hardened version of the proxy plugin (safe-proxy) that implements mitigations, such as:
 
