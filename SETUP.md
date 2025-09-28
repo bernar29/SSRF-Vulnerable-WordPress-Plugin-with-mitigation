@@ -134,7 +134,7 @@ docker compose logs internal-api
 
 This lab is **intentionally vulnerable**.
 
->[!WARNING]
+>[!CAUTION]
 > It is for local use only — **do not expose containers to the internet or deploy this stack in production**.
 >
 
